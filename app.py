@@ -2,12 +2,12 @@ import streamlit as st
 from datetime import datetime
 import pandas as pd
 import time
-from openai import OpenAI
-import os
+#from openai import OpenAI
+#import os
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
+#client = OpenAI(
+#    api_key=os.getenv("OPENAI_API_KEY")
+#)
 
 #========================================
 # CONFIGURACIÓN VISUAL (ESTILO APP)
@@ -176,38 +176,38 @@ elif menu == "Mi Impacto (ODS)":
     st.write("🏆 ¡Excelente trabajo! Sigue así y alcanza tu meta mensual.")
 
 #--- ASISTENTE VIRTUAL ---
-elif menu == "Asistente Virtual":
+#elif menu == "Asistente Virtual":
 
-    st.header("🤖 Asistente de Bienestar IA")
+  #  st.header("🤖 Asistente de Bienestar IA")
 
-    pregunta = st.text_area(
-        "Escribe tu pregunta",
-        placeholder="¿Cómo puedo reducir mi estrés antes de un examen?"
-    )
+   # pregunta = st.text_area(
+    #    "Escribe tu pregunta",
+    #    placeholder="¿Cómo puedo reducir mi estrés antes de un examen?"
+   # )
 
-    if st.button("Preguntar"):
+   # if st.button("Preguntar"):
 
-        with st.spinner("Pensando..."):
+     #   with st.spinner("Pensando..."):
 
-            respuesta = client.chat.completions.create(
-                model="gpt-4.1-mini",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": """
-                        Eres un asistente de bienestar estudiantil.
-                        Ayudas con estrés, ansiedad, alimentación saludable,
-                        hábitos de estudio y salud mental.
-                        """
-                    },
-                    {
-                        "role": "user",
-                        "content": pregunta
-                    }
-                ]
-            )
+     #       respuesta = client.chat.completions.create(
+     #           model="gpt-4.1-mini",
+     #           messages=[
+     #               {
+     #                   "role": "system",
+      #                  "content": """
+      #                  Eres un asistente de bienestar estudiantil.
+      #                  Ayudas con estrés, ansiedad, alimentación saludable,
+      #                  hábitos de estudio y salud mental.
+       #                 """
+       #             },
+       #             {
+       #                 "role": "user",
+        #                "content": pregunta
+        #            }
+        #        ]
+       #     )
 
-            st.write(respuesta.choices[0].message.content)
+           # st.write(respuesta.choices[0].message.content)
 
 #--- DONACIONES ---
 elif menu == "Donaciones":
