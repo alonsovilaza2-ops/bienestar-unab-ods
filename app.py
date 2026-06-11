@@ -82,9 +82,8 @@ if comida == "Otro":
         min_value=0,
         value=100
     )
-    
-    
-   if st.button("Guardar Registro"):
+
+if st.button("Guardar Registro"):
 
     st.success("Datos guardados en la nube del proyecto.")
 
@@ -95,9 +94,6 @@ if comida == "Otro":
     elif comida == "Otro":
         st.write(f"🍽️ Alimento registrado: {comida_personalizada}")
         st.write(f"🔥 Calorías aproximadas: {calorias_manual} kcal")
-    
-       
-       st.markdown("## ❤️ Ayuda a otros estudiantes")
 
 
 #--- TAREAS ---
@@ -226,3 +222,4 @@ elif menu == "Donaciones":
     st.link_button(
         "💳 Donar con Mercado Pago",
         "https://link.mercadopago.cl/minimarketplace"
+    )
