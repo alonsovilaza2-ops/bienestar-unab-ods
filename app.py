@@ -2,10 +2,12 @@ import streamlit as st
 from datetime import datetime
 import pandas as pd
 import time
-pip install openai
 from openai import OpenAI
+import os
 
-client = OpenAI(api_key="TU_API_KEY")
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
 
 #========================================
 # CONFIGURACIÓN VISUAL (ESTILO APP)
@@ -34,6 +36,12 @@ calorias_db = {
     "Pizza": 285,
     "Hamburguesa": 354
 }
+alimentos_db = {
+    "Manzana": "Saludable - Aporta vitaminas y fibra.",
+    "Avena": "Saludable - Rica en fibra y energía.",
+    "Yogurt": "Saludable - Calcio y proteínas.",
+    "Pizza": "No saludable - Exceso de grasas y sodio.",
+    "Hamburguesa": "No saludable - Alta en grasas saturadas."
 }
 
 #========================================
