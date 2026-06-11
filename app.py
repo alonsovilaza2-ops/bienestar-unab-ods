@@ -61,40 +61,61 @@ menu = st.sidebar.selectbox(
 
 #--- REGISTRO DIARIO ---
 if menu == "Registro Diario":
+
     st.header("¿Cómo va tu día?")
-    
+
     nombre = st.text_input("Nombre del Estudiante")
-    emocion = st.select_slider("Estado Emocional:", options=["Cansado", "Ansioso", "Estresado", "Feliz"])
-    
-    if emocion in ["Ansioso", "Estresado"]:
-        st.warning("⚠️ Nota: Recuerda que en Sede República tienes apoyo psicológico gratuito.")
-        
-    comida = st.selectbox(
-    "¿Qué almorzaste/comiste?",
-    list(alimentos_db.keys()) + ["Otro"]
-)
 
-if comida == "Otro":
-    comida_personalizada = st.text_input("Escribe el alimento")
-
-    calorias_manual = st.number_input(
-        "Calorías aproximadas del alimento",
-        min_value=0,
-        value=100
+    emocion = st.select_slider(
+        "Estado Emocional:",
+        options=["Cansado", "Ansioso", "Estresado", "Feliz"]
     )
 
-if st.button("Guardar Registro"):
+    if emocion in ["Ansioso", "Estresado"]:
+        st.warning(
+            "⚠️ Nota: Recuerda que en Sede República tienes apoyo psicológico gratuito."
+        )
 
-    st.success("Datos guardados en la nube del proyecto.")
+    comida = st.selectbox(
+        "¿Qué almorzaste/comiste?",
+        list(alimentos_db.keys()) + ["Otro"]
+    )
 
-    if comida in alimentos_db:
-        st.info(f"Análisis Nutricional: {alimentos_db[comida]}")
-        st.write(f"🔥 Calorías aproximadas: {calorias_db[comida]} kcal")
+    if comida == "Otro":
 
-    elif comida == "Otro":
-        st.write(f"🍽️ Alimento registrado: {comida_personalizada}")
-        st.write(f"🔥 Calorías aproximadas: {calorias_manual} kcal")
+        comida_personalizada = st.text_input(
+            "Escribe el alimento"
+        )
 
+        calorias_manual = st.number_input(
+            "Calorías aproximadas del alimento",
+            min_value=0,
+            value=100
+        )
+
+    if st.button("Guardar Registro"):
+
+        st.success("Datos guardados en la nube del proyecto.")
+
+        if comida in alimentos_db:
+
+            st.info(
+                f"Análisis Nutricional: {alimentos_db[comida]}"
+            )
+
+            st.write(
+                f"🔥 Calorías aproximadas: {calorias_db[comida]} kcal"
+            )
+
+        elif comida == "Otro":
+
+            st.write(
+                f"🍽️ Alimento registrado: {comida_personalizada}"
+            )
+
+            st.write(
+                f"🔥 Calorías aproximadas: {calorias_manual} kcal"
+            )
 
 #--- TAREAS ---
 elif menu == "Tareas Académicas":
