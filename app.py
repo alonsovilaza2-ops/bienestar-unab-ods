@@ -2,12 +2,12 @@ import streamlit as st
 from datetime import datetime
 import pandas as pd
 import time
-#from openai import OpenAI
-#import os
+# from openai import OpenAI
+# import os
 
-#client = OpenAI(
-#    api_key=os.getenv("OPENAI_API_KEY")
-#)
+# client = OpenAI(
+#     api_key=os.getenv("OPENAI_API_KEY")
+# )
 
 #========================================
 # CONFIGURACIÓN VISUAL (ESTILO APP)
@@ -150,15 +150,43 @@ elif menu == "Técnicas de Relajación":
         Repite el proceso durante 5 minutos.
         """)
 
+    if tecnica == "Escuchar música Lo-Fi":
+        st.markdown("""
+        ### ¿Qué es la música Lo-Fi?
+        
+        La música Lo-Fi (low fidelity) es relajante, con ritmos suaves, sonidos ambientales y loops repetitivos.
+        Suele incluir piano suave, beats lentos, ruido de vinilo o sonidos de lluvia, y se usa para estudiar o relajarse.
+        
+        Ejemplos:
+        - Playlists "Lo-Fi Beats" o "Lo-Fi Hip Hop" en plataformas como Spotify o YouTube.
+        - Canciones con piano minimalista y percusión leve, sin letras que distraigan.
+        - Fondos con sonidos de lluvia/ciudad para mantener la concentración.
+        """)
+
+    if tecnica == "Hidratación consciente":
+        st.markdown("""
+        ### ¿Qué es la hidratación consciente?
+        
+        Es beber agua de forma regular y atenta para mantener energía, concentración y reducir la fatiga.
+        
+        Ejemplos prácticos:
+        - Beber 1 vaso de agua al levantarte y otro cada 1–2 horas.
+        - Llevar una botella con marcas de tiempo (ej.: 250 ml cada hora).
+        - Añadir rodajas de limón o pepino para hacerlo más agradable.
+        - Usar recordatorios en el teléfono o temporizadores breves.
+        """)
+    # Botón común para iniciar la técnica (si aplica)
     if st.button("Comenzar"):
-        progreso = st.progress(0)
+        if tecnica == "Respiración 4-7-8":
+            progreso = st.progress(0)
+            for i in range(300):  # 300 segundos = 5 minutos
+                time.sleep(1)
+                progreso.progress((i + 1) / 300)
+            st.success("✅ ¡Felicitaciones! Completaste los 5 minutos.")
+            st.balloons()
+        else:
+            st.info("✅ Recomendación: practica la técnica durante 5–15 minutos según tu disponibilidad.")
 
-        for i in range(300):  # 300 segundos = 5 minutos
-            time.sleep(1)
-            progreso.progress((i + 1) / 300)
-
-        st.success("✅ ¡Felicitaciones! Completaste los 5 minutos.")
-        st.balloons()
 #--- ESTADÍSTICAS ---
 elif menu == "Mi Impacto (ODS)":
 
@@ -210,23 +238,23 @@ elif menu == "Mi Impacto (ODS)":
 
      #   with st.spinner("Pensando..."):
 
-     #       respuesta = client.chat.completions.create(
-     #           model="gpt-4.1-mini",
-     #           messages=[
-     #               {
-     #                   "role": "system",
-      #                  "content": """
-      #                  Eres un asistente de bienestar estudiantil.
-      #                  Ayudas con estrés, ansiedad, alimentación saludable,
-      #                  hábitos de estudio y salud mental.
-       #                 """
-       #             },
-       #             {
-       #                 "role": "user",
-        #                "content": pregunta
-        #            }
-        #        ]
-       #     )
+      #      respuesta = client.chat.completions.create(
+       #         model="gpt-4.1-mini",
+        #        messages=[
+         #           {
+          #               "role": "system",
+           #             "content": """
+            #              Eres un asistente de bienestar estudiantil.
+             #             Ayudas con estrés, ansiedad, alimentación saludable,
+              #            hábitos de estudio y salud mental.
+               #             """
+                #     },
+                 #    {
+                  #       "role": "user",
+                   #      "content": pregunta
+                    # }
+                 #]
+        #    )
 
            # st.write(respuesta.choices[0].message.content)
 
