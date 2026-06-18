@@ -10,7 +10,7 @@ from openai import OpenAI
 # Pega tu API Key entre las comillas.
 # Ejemplo:
 # API_KEY_DIRECTA = "sk-xxxxxxxxxxxxxxxxxxxxxxxx"
-API_KEY_DIRECTA = "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"
+API_KEY_DIRECTA = "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"
 
 # Cliente de OpenAI
 client = OpenAI(api_key=API_KEY_DIRECTA)
